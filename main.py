@@ -62,13 +62,11 @@ def delete_folders(folders, deleted_folders):
 def main():
     global path
     path = os.path.normpath(input("📁 Path to folder to check for empty folders: ")).replace("\\", "/")
-    print("> " + path)
     if not os.path.isdir(path):
         print("❌ Path must be an existing folder")
         return
 
     recursively = get_user_confirmation("🔁 Recursively (check child folders)?")
-    print("> " + recursively)
 
     while True:
         empty_folders = find_empty_folders(path, recursively)
@@ -98,7 +96,6 @@ def main():
 
                 print("✅ Deleted {} folders".format(deleted_folders[0]))
                 if recursively and get_user_confirmation("💫 Rerun to check if new empty folders where created?"):
-                    print("\n")
                     continue
             else:
                 print("❌ No folders were deleted")
@@ -116,4 +113,4 @@ if __name__ == "__main__":
         except Exception as ex:
             print("❌ Fatal error: {}".format(ex))
 
-        print("\n🔄 Restarting")
+        print("\n🔄 Restarting\n")
